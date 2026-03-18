@@ -52,7 +52,8 @@ def format_2d(ax, data, title, cmap):
     ax.set_aspect('equal')
     ax.set_title(title, fontsize=10, pad=10)
     ax.tick_params(labelsize=8)
-    
+    ax.set_xlabel("x", fontsize=8)
+    ax.set_ylabel("y", fontsize=8)
     divider = make_axes_locatable(ax)
     cax = divider.append_axes("right", size="3%", pad=0.1)
     cb = fig.colorbar(im, cax=cax, ticks=ticks)
@@ -70,6 +71,8 @@ ax2.plot_surface(X, Y, Z, cmap='viridis', edgecolor='none', alpha=0.8)
 ax2.contour(X, Y, Z, levels=20, offset=np.min(Z), cmap='viridis', alpha=0.5)
 ax2.set_title("3D Scalar Field", fontsize=10)
 ax2.tick_params(labelsize=7)
+ax2.set_xlabel("x", fontsize=8)
+ax2.set_ylabel("y", fontsize=8)
 
 # 3) Laplacian (2D)
 ax3 = fig.add_subplot(2, 2, 3)
@@ -78,6 +81,8 @@ format_2d(ax3, laplacian, r"Laplacian $\Delta f$", 'coolwarm')
 # 4) Laplacian (3D)
 ax4 = fig.add_subplot(2, 2, 4, projection='3d')
 ax4.plot_surface(X, Y, laplacian, cmap='coolwarm', edgecolor='none', alpha=0.8)
+ax4.set_xlabel("x", fontsize=8)
+ax4.set_ylabel("y", fontsize=8)
 
 # Floor contours only if there is variation
 if not np.isclose(np.min(laplacian), np.max(laplacian)):
